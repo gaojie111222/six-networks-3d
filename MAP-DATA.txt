@@ -1,0 +1,19 @@
+坪山区六网统筹规划 · 地图数据
+
+区界、街道边界和地名、道路及水系
+© OpenStreetMap contributors
+https://www.openstreetmap.org/copyright
+Open Database License 1.0 (ODbL)
+https://opendatacommons.org/licenses/odbl/1-0/
+坪山区关系 https://www.openstreetmap.org/relation/4590423
+本网页使用的提取数据随 assets/map-data.min.js 发布。
+
+地形
+Mapzen Terrain Tiles · SRTM data courtesy of the U.S. Geological Survey
+https://registry.opendata.aws/terrain-tiles/
+https://github.com/tilezen/joerd/blob/master/docs/attribution.md
+原始瓦片 https://s3.amazonaws.com/elevation-tiles-prod/skadi/N22/N22E114.hgt.gz
+
+虚构演示数据
+六网项目的名称、线路、点位、工期、进度和指标均为原型演示内容。
+沙盘的建筑体块以示意方式生成。

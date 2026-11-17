@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN" data-layout="review">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="坪山区六网统筹规划交互原型。查看电网、水网、通信网、物流网、地下管网和算力网的线路与项目。">
+<meta name="theme-color" content="#0b1320">
+<title>六网统筹规划 · 坪山区</title>
+<script>const preset=new URLSearchParams(location.search).get("view");["atlas","field"].includes(preset)&&(document.documentElement.dataset.layout=preset);</script>
+<link rel="icon" href="./assets/atlas-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/planning.min.css">
+<script defer src="./assets/map-data.min.js"></script>
+<script defer src="./assets/planning.min.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#workspace">进入规划地图</a>
+<header class="masthead">
+<div class="masthead-inner">
+<a class="brand" href="./index.html" aria-label="六网统筹规划首页">
+<span class="brand-mark" data-icon="brand" aria-hidden="true"></span>
+<span>六网统筹规划</span>
+</a>
+<nav class="top-nav" aria-label="工作台导航">
+<button type="button" data-panel="overview" aria-pressed="true"><span data-icon="map"></span>地图总览</button>
+<button type="button" data-panel="list" aria-pressed="false"><span data-icon="list"></span>项目清单</button>
+</nav>
+<div class="masthead-actions">
+<span class="location"><span data-icon="pin" aria-hidden="true"></span>深圳市 · 坪山区</span>
+<span class="prototype-tag"><i></i>原型演示</span>
+<details class="layout-picker">
+<summary title="切换界面方案"><span data-icon="layout" aria-hidden="true"></span><span class="picker-text">界面方案</span><span class="picker-chevron" data-icon="chevron-down" aria-hidden="true"></span></summary>
+<div class="layout-options">
+<a href="./index.html?view=review" data-preset="review"><span data-icon="cube"></span><span><b>沙盘工作台</b><small>分栏查看地图与项目详情</small></span></a>
+<a href="./index.html?view=atlas" data-preset="atlas"><span data-icon="map"></span><span><b>规划图册</b><small>横向图层与浅色底图</small></span></a>
+<a href="./index.html?view=field" data-preset="field"><span data-icon="mobile"></span><span><b>移动巡查</b><small>大地图与底部操作</small></span></a>
+</div>
+</details>
+</div>
+</div>
+</header>
+<main class="shell" id="workspace">
+<section class="intro" aria-label="规划范围与阶段">
+<div class="intro-copy">
+<div class="intro-context"><span class="context-line"></span>区级基础设施规划</div>
+<h1>坪山区规划一张图</h1>
+</div>
+<section class="phase-selector" aria-labelledby="phase-label">
+<span class="phase-label" id="phase-label"><span data-icon="calendar" aria-hidden="true"></span>规划阶段</span>
+<div class="phase-group" role="group" aria-label="按规划阶段筛选">
+<button type="button" data-stage="all" aria-pressed="true">全部阶段</button>
+<button type="button" data-stage="2027" aria-pressed="false"><b>2027</b><span>近期建设</span></button>
+<button type="button" data-stage="2030" aria-pressed="false"><b>2030</b><span>远景布局</span></button>
+</div>
+</section>
+</section>
+<div class="workspace">
+<aside class="rail panel" aria-labelledby="layers-title">
+<div class="rail-head">
+<span class="section-icon" data-icon="layers" aria-hidden="true"></span>
+<h2 id="layers-title">网络图层</h2>
+<span class="rail-count">6 类</span>
+</div>
+<div id="networks" class="network-list" role="group" aria-label="选择网络图层"></div>
+<section class="rail-summary" aria-labelledby="summary-title">
+<div class="rail-summary-header"><h3 id="summary-title">当前视图</h3><span id="summary-number"></span></div>
+<div class="summary-bar" aria-hidden="true"><span id="summary-near-bar"></span><span id="summary-far-bar"></span></div>
+<dl>
+<div><dt><i></i>2027 近期</dt><dd id="summary-near"></dd></div>
+<div><dt><i></i>2030 远景</dt><dd id="summary-far"></dd></div>
+</dl>
+</section>
+</aside>
+<section class="map-card panel" aria-labelledby="map-heading">
+<div class="map-stage" id="map-stage">
+<canvas id="atlas-canvas" role="img" aria-labelledby="map-heading" aria-describedby="map-snapshot"><p>可在项目清单中查看当前规划项目。</p></canvas>
+<div id="map-error" class="map-error" hidden>地图暂时无法加载。仍可通过项目清单查看演示项目。</div>
+<div class="map-title">
+<div class="map-mode-title"><span class="map-title-icon" data-icon="cube" aria-hidden="true"></span><h2 id="map-heading">坪山区三维沙盘</h2></div>
+<div class="map-kicker"><i></i><span id="map-snapshot" aria-live="polite">全区视图</span></div>
+</div>
+<div class="map-actions" role="group" aria-label="地图操作">
+<button id="compass" class="map-button compass" type="button" title="恢复全区视角" aria-label="恢复全区视角"><b>N</b><span id="compass-needle" data-icon="compass" aria-hidden="true"></span></button>
+<div class="map-button-group">
+<button class="map-button" type="button" data-map-action="zoom-in" title="放大" aria-label="放大"><span data-icon="plus"></span></button>
+<button class="map-button" type="button" data-map-action="zoom-out" title="缩小" aria-label="缩小"><span data-icon="minus"></span></button>
+<button class="map-button" type="button" data-map-action="rotate" title="旋转视角" aria-label="旋转视角"><span data-icon="rotate"></span></button>
+<button class="map-button" type="button" data-map-action="fullscreen" title="全屏地图" aria-label="全屏地图"><span data-icon="maximize"></span></button>
+</div>
+</div>
+<button type="button" class="map-callout" id="map-callout" hidden><span class="callout-dot"></span><span id="callout-text"></span><span class="callout-arrow" data-icon="chevron-right" aria-hidden="true"></span></button>
+<div class="map-bottom">
+<div class="map-legend" aria-label="地图图例">
+<span><i class="legend-point"></i>站点</span>
+<span data-legend-stage="2027"><i class="legend-line"></i>2027 线路</span>
+<span data-legend-stage="2030"><i class="legend-line dashed"></i>2030 线路</span>
+</div>
+<div class="map-modes" role="group" aria-label="地图模式">
+<button type="button" data-mode="2d" title="二维地图" aria-pressed="false">2D</button>
+<button type="button" data-mode="3d" title="三维沙盘" aria-pressed="true">3D</button>
+</div>
+</div>
+</div>
+<div class="map-footer">
+<span id="map-help" class="map-help"><span data-icon="hand" aria-hidden="true"></span><span id="map-help-label">拖拽旋转 · 滚轮缩放</span></span>
+<span id="map-credits" class="map-credits"></span>
+</div>
+</section>
+<aside class="inspector panel" id="inspector" aria-labelledby="inspector-heading">
+<div class="inspector-header">
+<span class="section-icon" data-icon="detail" aria-hidden="true"></span>
+<h2 id="inspector-heading" tabindex="-1">项目详情</h2>
+<button class="icon-button inspector-close" id="inspector-close" type="button" title="关闭" aria-label="关闭项目面板"><span data-icon="x"></span></button>
+</div>
+<div class="inspector-scroll" id="inspector-content"></div>
+</aside>
+</div>
+<footer class="site-footer">
+<span><span data-icon="info" aria-hidden="true"></span>站点、线路、进度及规划指标为演示数据</span>
+<button type="button" id="footer-list" class="footer-list"><span data-icon="list" aria-hidden="true"></span>查看项目清单</button>
+<span class="footer-location">坪山区 · 6 个街道</span>
+</footer>
+</main>
+<button class="sheet-backdrop" id="sheet-backdrop" type="button" aria-label="关闭项目面板" tabindex="-1" hidden></button>
+<noscript>请启用 JavaScript 以使用此规划原型。</noscript>
+</body>
+</html>
