@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="坪山区六网统筹规划交互原型。查看电网、水网、通信网、物流网、地下管网和算力网的线路与项目。">
-<meta name="theme-color" content="#0b1320">
+<meta name="theme-color" content="#0d1f35">
 <title>六网统筹规划 · 坪山区</title>
 <script>const preset=new URLSearchParams(location.search).get("view");["atlas","field"].includes(preset)&&(document.documentElement.dataset.layout=preset);</script>
 <link rel="icon" href="./assets/atlas-mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./assets/planning.min.css">
+<link rel="stylesheet" href="./assets/planning.min.css?v=92a7b9bbfb67">
 <script defer src="./assets/map-data.min.js"></script>
-<script defer src="./assets/planning.min.js"></script>
+<script defer src="./assets/planning.min.js?v=92a7b9bbfb67"></script>
 </head>
 <body>
 <a class="skip-link" href="#workspace">进入规划地图</a>
@@ -26,13 +26,13 @@
 </nav>
 <div class="masthead-actions">
 <span class="location"><span data-icon="pin" aria-hidden="true"></span>深圳市 · 坪山区</span>
-<span class="prototype-tag"><i></i>原型演示</span>
+<span class="prototype-tag"><span data-icon="info" aria-hidden="true"></span>演示项目</span>
 <details class="layout-picker">
-<summary title="切换界面方案"><span data-icon="layout" aria-hidden="true"></span><span class="picker-text">界面方案</span><span class="picker-chevron" data-icon="chevron-down" aria-hidden="true"></span></summary>
+<summary title="切换视图布局" aria-label="切换视图布局"><span data-icon="layout" aria-hidden="true"></span><span class="picker-text">视图布局</span><span class="picker-chevron" data-icon="chevron-down" aria-hidden="true"></span></summary>
 <div class="layout-options">
-<a href="./index.html?view=review" data-preset="review"><span data-icon="cube"></span><span><b>沙盘工作台</b><small>分栏查看地图与项目详情</small></span></a>
-<a href="./index.html?view=atlas" data-preset="atlas"><span data-icon="map"></span><span><b>规划图册</b><small>横向图层与浅色底图</small></span></a>
-<a href="./index.html?view=field" data-preset="field"><span data-icon="mobile"></span><span><b>移动巡查</b><small>大地图与底部操作</small></span></a>
+<a href="./index.html?view=review" data-preset="review"><span data-icon="cube"></span><span><b>分栏工作台</b><small>左侧图层，右侧项目</small></span></a>
+<a href="./index.html?view=atlas" data-preset="atlas"><span data-icon="map"></span><span><b>横向图层</b><small>顶部切换图层</small></span></a>
+<a href="./index.html?view=field" data-preset="field"><span data-icon="mobile"></span><span><b>大地图</b><small>底部图层与详情抽屉</small></span></a>
 </div>
 </details>
 </div>
@@ -41,7 +41,6 @@
 <main class="shell" id="workspace">
 <section class="intro" aria-label="规划范围与阶段">
 <div class="intro-copy">
-<div class="intro-context"><span class="context-line"></span>区级基础设施规划</div>
 <h1>坪山区规划一张图</h1>
 </div>
 <section class="phase-selector" aria-labelledby="phase-label">
@@ -76,7 +75,7 @@
 <div id="map-error" class="map-error" hidden>地图暂时无法加载。仍可通过项目清单查看演示项目。</div>
 <div class="map-title">
 <div class="map-mode-title"><span class="map-title-icon" data-icon="cube" aria-hidden="true"></span><h2 id="map-heading">坪山区三维沙盘</h2></div>
-<div class="map-kicker"><i></i><span id="map-snapshot" aria-live="polite">全区视图</span></div>
+<div class="map-kicker"><span id="map-snapshot" aria-live="polite">全区视图</span></div>
 </div>
 <div class="map-actions" role="group" aria-label="地图操作">
 <button id="compass" class="map-button compass" type="button" title="恢复全区视角" aria-label="恢复全区视角"><b>N</b><span id="compass-needle" data-icon="compass" aria-hidden="true"></span></button>
